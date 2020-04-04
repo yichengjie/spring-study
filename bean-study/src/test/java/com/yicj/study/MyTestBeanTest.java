@@ -19,6 +19,14 @@ public class MyTestBeanTest {
         assertEquals("testStr",myTestBean.getTestStr());
     }
 
+    @Test
+    public void testABService(){
+        ClassPathResource resource = new ClassPathResource("ab-service.xml");
+        XmlBeanFactory beanFactory = new XmlBeanFactory(resource);
+        TeacherService teacherService = beanFactory.getBean("teacherService", TeacherService.class);
+        System.out.println(teacherService);
+    }
+
 
     @Test
     public void testBeanDefinition(){
