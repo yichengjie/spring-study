@@ -1,10 +1,12 @@
 package com.yicj.study;
 
 import org.junit.Test;
+import org.springframework.beans.factory.BeanCurrentlyInCreationException;
 import org.springframework.beans.factory.support.ChildBeanDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import static org.junit.Assert.* ;
@@ -25,6 +27,19 @@ public class MyTestBeanTest {
         XmlBeanFactory beanFactory = new XmlBeanFactory(resource);
         TeacherService teacherService = beanFactory.getBean("teacherService", TeacherService.class);
         System.out.println(teacherService);
+    }
+
+
+    @Test(expected = BeanCurrentlyInCreationException.class)
+    public void testCircleCreate() throws Throwable{
+        try {
+            new ClassPathXmlApplicationContext("circle-service.xml") ;
+        }catch (Exception e){
+            //因为要在创建testC时抛错
+            Throwable e1 = e.getCause().getCause().getCause();
+            throw e1 ;
+            //throw e ;
+        }
     }
 
 
