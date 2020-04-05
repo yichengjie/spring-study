@@ -1,5 +1,7 @@
 package com.yicj.study;
 
+import com.yicj.bean.HelloMessage;
+import com.yicj.conversion.String2DateConverter;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanCurrentlyInCreationException;
 import org.springframework.beans.factory.support.ChildBeanDefinition;
@@ -8,7 +10,11 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.core.io.ClassPathResource;
+
+import java.util.Date;
+
 import static org.junit.Assert.* ;
 
 public class MyTestBeanTest {
@@ -40,6 +46,34 @@ public class MyTestBeanTest {
             throw e1 ;
             //throw e ;
         }
+    }
+
+
+    @Test
+    public void testApplicationContext(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beanFactoryTest.xml");
+        MyTestBean myTestBean = context.getBean("myTestBean", MyTestBean.class);
+        assertEquals("testStr",myTestBean.getTestStr());
+    }
+
+    @Test
+    public void testBeanMessage(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        HelloMessage bean = context.getBean("message", HelloMessage.class);
+        //context.getMessage()
+        System.out.println(bean);
+    }
+
+
+
+    @Test
+    public void testConversion(){
+        DefaultConversionService conversionService = new DefaultConversionService() ;
+        conversionService.addConverter(new String2DateConverter());
+        //yyyy-MM-dd HH:mm:ss
+        String dataStr = "2020-04-05 16:43:20" ;
+        Date date = conversionService.convert(dataStr, Date.class);
+        System.out.println(date);
     }
 
 
