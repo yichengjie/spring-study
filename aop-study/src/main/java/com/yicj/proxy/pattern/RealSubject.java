@@ -1,4 +1,4 @@
-package com.yicj.pattern;
+package com.yicj.proxy.pattern;
 
 public class RealSubject implements Subject {
     @Override

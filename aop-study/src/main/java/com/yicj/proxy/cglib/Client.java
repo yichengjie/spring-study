@@ -1,7 +1,7 @@
-package com.yicj.cglib;
+package com.yicj.proxy.cglib;
 
-import com.yicj.pattern.RealSubject;
-import com.yicj.pattern.Subject;
+import com.yicj.proxy.pattern.RealSubject;
+import com.yicj.proxy.pattern.Subject;
 
 public class Client {
 

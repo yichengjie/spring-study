@@ -1,4 +1,4 @@
-package com.yicj.cglib;
+package com.yicj.proxy.cglib;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

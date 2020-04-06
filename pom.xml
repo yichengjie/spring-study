@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>bean-study</module>
+      <module>aop-study</module>
   </modules>
 
   <name>spring-study</name>
