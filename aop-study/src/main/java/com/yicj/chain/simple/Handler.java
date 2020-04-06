@@ -1,4 +1,4 @@
-package com.yicj.chain;
+package com.yicj.chain.simple;
 
 import lombok.Data;
 
