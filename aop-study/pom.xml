@@ -12,6 +12,7 @@
     <artifactId>aop-study</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
