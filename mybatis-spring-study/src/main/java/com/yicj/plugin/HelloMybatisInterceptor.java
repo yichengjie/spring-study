@@ -22,8 +22,6 @@ import java.util.Properties;
 })
 public class HelloMybatisInterceptor implements Interceptor {
     private Logger logger = LoggerFactory.getLogger(this.getClass()) ;
-
-
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         //String name = invocation.getMethod().getName();
@@ -45,7 +43,6 @@ public class HelloMybatisInterceptor implements Interceptor {
         //logger.info("xxx") ;
         return invocation.proceed();
     }
-
     @Override
     public Object plugin(Object target) {
         if (target instanceof StatementHandler){
@@ -53,13 +50,10 @@ public class HelloMybatisInterceptor implements Interceptor {
         }
         return target;
     }
-
     @Override
     public void setProperties(Properties properties) {
 
     }
-
-
     //处理动态参数的列，值及schema
     private String transformSql(String originalSql) {
         String newResult = originalSql ;
@@ -71,9 +65,6 @@ public class HelloMybatisInterceptor implements Interceptor {
         }
         return newResult ;
     }
-
-
-
     public Object processTarget(Object target){
         if (Proxy.isProxyClass(target.getClass())){
             MetaObject mo = SystemMetaObject.forObject(target);
@@ -81,5 +72,4 @@ public class HelloMybatisInterceptor implements Interceptor {
         }
         return target;
     }
-
 }
