@@ -1,4 +1,4 @@
-package com.yicj.mapper;
+package com.yicj.row;
 
 import com.yicj.model.User;
 

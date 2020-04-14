@@ -1,4 +1,4 @@
-package com.yicj.mapper;
+package com.yicj.row;
 
 import com.yicj.model.User;
 import com.yicj.utils.MyBatisUtils;
@@ -6,7 +6,6 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class UserMapperTest {
     private static SqlSessionFactory sqlSessionFactory ;

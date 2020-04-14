@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user) throws Exception {
-        String sql = "insert into user (name,age,sex) values (?,?,?)" ;
+        String sql = "insert into user2 (name,age,sex) values (?,?,?)" ;
         Object[] params = {user.getName(), user.getAge(),user.getSex()};
         int [] types = {Types.VARCHAR,Types.INTEGER,Types.VARCHAR} ;
         jdbcTemplate.update(sql, params, types) ;

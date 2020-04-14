@@ -1,4 +1,4 @@
-package com.yicj.mapper;
+package com.yicj.row;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
