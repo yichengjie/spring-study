@@ -8,6 +8,10 @@
         <typeAlias alias="User" type="com.yicj.model.User" />
     </typeAliases>
 
+    <plugins>
+        <plugin interceptor="com.yicj.plugin.HelloMybatisInterceptor" />
+    </plugins>
+
     <mappers>
         <mapper resource="mappers/UserMapper.xml" />
     </mappers>
