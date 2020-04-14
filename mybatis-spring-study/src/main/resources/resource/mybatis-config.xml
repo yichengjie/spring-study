@@ -10,6 +10,16 @@
 
     <plugins>
         <plugin interceptor="com.yicj.plugin.HelloMybatisInterceptor" />
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql"/>
+            <property name="offsetAsPageNum" value="true"/>
+            <property name="rowBoundsWithCount" value="true"/>
+            <property name="pageSizeZero" value="true"/>
+            <property name="reasonable" value="true"/>
+            <property name="params" value="pageNum=start;pageSize=list;"/>
+            <property name="supportMethodsArguments" value="true"/>
+            <property name="returnPageInfo" value="check"/>
+        </plugin>
     </plugins>
 
     <mappers>
