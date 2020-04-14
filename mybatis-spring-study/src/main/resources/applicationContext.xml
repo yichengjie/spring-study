@@ -27,8 +27,23 @@
         <property name="configLocation" value="classpath:resource/mybatis-config.xml" />
     </bean>
 
-    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="com.yicj.mapper.UserMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>-->
+
+    <!--mapper自动扫描-->
+    <bean class ="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="${basePackage}" />
+        <!--配合PropertyPlaceholderConfigurer使用-->
+        <property name="processPropertyPlaceHolders" value="true" />
+    </bean>
+
+    <bean id="mesHandler" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>/config/test.properties</value>
+            </list>
+        </property>
     </bean>
 </beans>
