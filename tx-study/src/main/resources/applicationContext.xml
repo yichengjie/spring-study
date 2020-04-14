@@ -27,7 +27,7 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <tx:annotation-driven  mode="aspectj"/>
+    <tx:annotation-driven />
 
 
 </beans>
