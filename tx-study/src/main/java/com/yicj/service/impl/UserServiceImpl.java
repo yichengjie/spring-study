@@ -1,5 +1,6 @@
 package com.yicj.service.impl;
 
+import com.yicj.exception.UserException;
 import com.yicj.model.User;
 import com.yicj.service.UserService;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     //@Transactional(rollbackFor = Exception.class)
-    @Transactional
+    //@Transactional
     @Override
     public void save(User user) throws Exception {
         String sql = "insert into user2 (name,age,sex) values (?,?,?)" ;
@@ -26,6 +27,6 @@ public class UserServiceImpl implements UserService {
         int [] types = {Types.VARCHAR,Types.INTEGER,Types.VARCHAR} ;
         jdbcTemplate.update(sql, params, types) ;
         //事务测试，加上这句话
-        throw new RuntimeException("aa") ;
+        throw new Exception("aa") ;
     }
 }
