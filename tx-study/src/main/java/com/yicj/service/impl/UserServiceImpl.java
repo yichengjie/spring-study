@@ -3,6 +3,7 @@ package com.yicj.service.impl;
 import com.yicj.model.User;
 import com.yicj.service.UserService;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.Types;
@@ -16,6 +17,8 @@ public class UserServiceImpl implements UserService {
         this.jdbcTemplate = new JdbcTemplate(dataSource) ;
     }
 
+    //@Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public void save(User user) throws Exception {
         String sql = "insert into user2 (name,age,sex) values (?,?,?)" ;
