@@ -11,8 +11,9 @@ package com.yicj.spring.aspectj;
  */
 public class Foo {
 
-    public void method1(){
-        System.out.println("method1 execution.");
+    @MyAnno("hello world")
+    public void method1(String taskName){
+        System.out.println("method1 execution. ["+taskName+"]");
     }
 
     public void method2(){

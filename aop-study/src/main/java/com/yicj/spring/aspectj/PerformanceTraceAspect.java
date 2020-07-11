@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.util.StopWatch;
 
@@ -20,8 +21,16 @@ import org.springframework.util.StopWatch;
 @Slf4j
 public class PerformanceTraceAspect {
 
-    @Pointcut("execution(public void *.method1()) || execution(public void *.method2())")
+    @Pointcut("execution(public void *.method1(String)) || execution(public void *.method2())")
     public void pointcutName(){}
+
+    @Before("execution(public void *.method1(String)) && args(name) && @annotation(anno)")
+    public void setupResourcesBefore(String name, MyAnno anno){
+        log.info("=====> setupResourcesBefore ..");
+        log.info("anno value : " + anno.value());
+        log.info("taskName : " + name);
+    }
+
 
     @Around("pointcutName()")
     public Object performanceTrace(ProceedingJoinPoint joinPoint) throws Throwable{

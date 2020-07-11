@@ -19,7 +19,7 @@ public class Main {
         weaver.setTarget(new Foo());
         weaver.addAspect(PerformanceTraceAspect.class);
         Foo proxy = weaver.getProxy();
-        proxy.method1();
+        proxy.method1("helloTask");
         proxy.method2();
     }
 }
