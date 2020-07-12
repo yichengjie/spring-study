@@ -18,9 +18,11 @@ public class Main {
         MockTask task = new MockTask() ;
         ProxyFactory weaver = new ProxyFactory(task) ;
         weaver.setInterfaces(ITask.class);
+        //
         NameMatchMethodPointcutAdvisor advisor = new NameMatchMethodPointcutAdvisor() ;
         advisor.setMappedName("execute");
         advisor.setAdvice(new PerformanceMethodInterceptor());
+        //
         weaver.addAdvisor(advisor);
         ITask proxyObject = (ITask) weaver.getProxy() ;
         proxyObject.execute(null);
