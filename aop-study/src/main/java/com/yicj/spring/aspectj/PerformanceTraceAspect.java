@@ -22,7 +22,10 @@ import org.springframework.util.StopWatch;
 public class PerformanceTraceAspect {
 
     @Pointcut("execution(public void *.method1(String)) || execution(public void *.method2())")
-    public void pointcutName(){}
+    public void pointcutName1(){}
+
+    @Pointcut("execution(public * *(..))")
+    public void pointcutName2(){}
 
     @Before("execution(public void *.method1(String)) && args(name) && @annotation(anno)")
     public void setupResourcesBefore(String name, MyAnno anno){
@@ -32,7 +35,8 @@ public class PerformanceTraceAspect {
     }
 
 
-    @Around("pointcutName()")
+
+    @Around("pointcutName2()")
     public Object performanceTrace(ProceedingJoinPoint joinPoint) throws Throwable{
         StopWatch watch = new StopWatch() ;
         try {

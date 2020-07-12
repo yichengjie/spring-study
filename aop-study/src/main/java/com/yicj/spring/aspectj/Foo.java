@@ -1,5 +1,7 @@
 package com.yicj.spring.aspectj;
 
+import org.springframework.aop.framework.AopContext;
+
 /**
  * ClassName: Foo
  * Description: TODO(描述)
@@ -14,9 +16,19 @@ public class Foo {
     @MyAnno("hello world")
     public void method1(String taskName){
         System.out.println("method1 execution. ["+taskName+"]");
+        this.method2();
     }
 
     public void method2(){
         System.out.println("method2 execution.");
+    }
+
+    public void method3(){
+        System.out.println("method3 execution.");
+        this.getThis().method2();
+    }
+
+    public Foo getThis(){
+        return (Foo) AopContext.currentProxy() ;
     }
 }

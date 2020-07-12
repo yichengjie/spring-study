@@ -16,10 +16,12 @@ public class Main {
     public static void main(String[] args) {
         AspectJProxyFactory weaver = new AspectJProxyFactory() ;
         weaver.setProxyTargetClass(true);
+        weaver.setExposeProxy(true);
         weaver.setTarget(new Foo());
         weaver.addAspect(PerformanceTraceAspect.class);
         Foo proxy = weaver.getProxy();
-        proxy.method1("helloTask");
-        proxy.method2();
+//        proxy.method1("helloTask");
+//        proxy.method2();
+        proxy.method3();
     }
 }
